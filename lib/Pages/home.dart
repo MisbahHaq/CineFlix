@@ -1,15 +1,12 @@
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cineflix/Constants/moviecard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Home extends StatelessWidget {
+  Home({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   final List<String> imageUrls = [
     "images/damsel.jpg",
     "images/deadpool.jpg",
@@ -23,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(  
+      body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(top: 40, left: 20),
           child: Column(
@@ -126,24 +123,53 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               Container(
-                height: 200,
+                height: 300,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: imageUrls.map((url) {
-                    return Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          url,
-                          width: 150,
-                          height: 150,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    MovieCard(
+                        MovieName: "Damsel",
+                        MovieType: "Adventure, Thriller",
+                        MovieImg: "images/damsel2.jpg"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    MovieCard(
+                        MovieName: "Dune 2",
+                        MovieType: "Action, Thriller",
+                        MovieImg: "images/dune22.jpg"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    MovieCard(
+                        MovieName: "Deadpool 3",
+                        MovieType: "Action, Adventure, Comedy",
+                        MovieImg: "images/deadpool2.jpg"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    MovieCard(
+                        MovieName: "Interstellar",
+                        MovieType: "Adventure, Thriller",
+                        MovieImg: "images/inter2.jpg"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    MovieCard(
+                        MovieName: "Godzilla",
+                        MovieType: "Action, Thriller",
+                        MovieImg: "images/godzilla2.jpg"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                  ],
                 ),
               ),
             ],
