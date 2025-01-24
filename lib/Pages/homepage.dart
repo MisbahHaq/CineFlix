@@ -18,14 +18,14 @@ class _HomePageState extends State<HomePage> {
     "images/road.jpg",
     "images/zilla.jpg"
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Container(
-        margin: EdgeInsets.only(top: 40, left: 20),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+      body: SingleChildScrollView(  
+        child: Container(
+          margin: EdgeInsets.only(top: 40, left: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -126,22 +126,26 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              ListView(
-                children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          "images/damsel.jpg",
-                          height: 150,
+              Container(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: imageUrls.map((url) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          url,
                           width: 150,
+                          height: 150,
                           fit: BoxFit.cover,
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              )
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
             ],
           ),
         ),
